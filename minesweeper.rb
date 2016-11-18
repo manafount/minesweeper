@@ -8,6 +8,8 @@
 #   end
 # end
 
+require_relative 'board.rb'
+
 class Minesweeper
   attr_reader :grid
 

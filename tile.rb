@@ -1,6 +1,6 @@
 class Tile
 
-  attr_accessor :neighbors, :mine, :flag, :selected
+  attr_accessor :neighbors, :mine, :flag, :selected, :revealed
 
   def initialize
     @flag = nil
@@ -11,6 +11,10 @@ class Tile
 
   def is_mine?
     mine
+  end
+
+  def is_revealed?
+    revealed
   end
 
 

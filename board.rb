@@ -40,6 +40,29 @@ class Board
     sum
   end
 
+  def expand_mineless(pos)
+    row, col = pos
+    (-1..1).each do |i|
+      (-1..1).each do |j|
+        tile = grid[row + i][col + j]
+        next if tile.nil? || tile.is_revealed?
+
+        tile.revealed = true
+
+        expand_mineless([row + i, col + j]) if tile.neighbors.zero?
+      end
+    end
+  end
+
+  def reveal(pos)
+    row, col = pos
+    tile = grid[row + i][col + j]
+    tile.revealed = true
+
+    expand_mineless(pos) if tile.neighbors > 0
+  end
+
+
   def initialize(size = 9)
     @size = size
     @grid = create_minefield(size)
