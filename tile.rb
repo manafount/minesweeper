@@ -7,6 +7,7 @@ class Tile
     @mine = false
     @neighbors = 0
     @selected = false
+    @revealed = false
   end
 
   def is_mine?

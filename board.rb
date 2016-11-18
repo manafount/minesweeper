@@ -1,4 +1,5 @@
 require_relative 'tile.rb'
+require 'byebug'
 
 class Board
   attr_reader :grid, :size
@@ -21,7 +22,7 @@ class Board
   def send_neighbors
     size.times do |i|
       size.times do |j|
-        tile = grid[i, j]
+        tile = grid[i][j]
         tile.neighbors = count_neighbors([i, j])
       end
     end
@@ -34,7 +35,7 @@ class Board
       (-1..1).each do |j|
         next if i.zero? && j.zero?
         next if grid[row + i][col + j].nil?
-        sum += 1 if grid[row + i][col + j].is_mine
+        sum += 1 if grid[row + i][col + j].is_mine?
       end
     end
     sum
